@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questão 13 - Snippet 2</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+            margin: 0;
+        }
+        .container {
+            width: 300px;
+        }
+        fieldset {
+            border: 2px solid #00acc1;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        legend {
+            color: #00acc1;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        .input-group label {
+            display: inline-block;
+            width: 80px;
+            margin-bottom: 3px;
+        }
+        .input-group input {
+            padding: 8px;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+            width: calc(100% - 90px); /* Ajusta para o label inline */
+        }
+        button[type="submit"] {
+            background-color: #00acc1;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+        }
+        button[type="submit"]:hover {
+            background-color: #008a9a;
+        }
+        #message {
+            margin-top: 15px;
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form id="authForm2">
+            <fieldset>
+                <legend>Acesso ao Sistema</legend>
+                <div class="input-group">
+                    <label for="user_email">Email:</label>
+                    <input type="email" id="user_email" name="user_email" placeholder="seu@email.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="user_pass">Senha:</label>
+                    <input type="password" id="user_pass" name="user_pass" placeholder="********" required>
+                </div>
+                <button type="submit">Entrar</button>
+            </fieldset>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('authForm2').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que a página recarregue
+            const emailField = document.getElementById('user_email');
+            const passField = document.getElementById('user_pass');
+            const messageDiv = document.getElementById('message');
+
+            if (emailField.value && passField.value) {
+                messageDiv.textContent = 'Verificando credenciais para: ' + emailField.value;
+                messageDiv.style.color = 'lightgreen';
+                // Simula uma verificação
+                setTimeout(() => {
+                    alert('Login simulado com sucesso!');
+                    // Limpar campos ou redirecionar
+                    // emailField.value = '';
+                    // passField.value = '';
+                    // messageDiv.textContent = '';
+                }, 1000);
+            } else {
+                messageDiv.textContent = 'Por favor, preencha e-mail e senha.';
+                messageDiv.style.color = 'orange';
+            }
+        });
+    </script>
+
+</body>
+</html>
